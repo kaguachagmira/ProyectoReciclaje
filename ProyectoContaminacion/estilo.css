@@ -1,0 +1,93 @@
+body
+{
+    background-image: url("199.jpg");
+    background-size: cover;
+}
+.plastics
+{
+    position: absolute;
+    background-image: url("fondo.jpg");
+    background-size: contain;
+    background-repeat: no-repeat fixed 1;
+    width: 850px;
+    height: 525px;
+    left: 18%;
+    border-style: solid;
+}
+.platanoOrganico
+{
+    position: absolute;
+    top: 260px;
+    left: 410px;
+    cursor: pointer;
+    border-style: dashed; 
+}
+.botellaVidrio
+{
+    position: absolute;
+    top: 335px;
+    left: 550px;
+    cursor: pointer;
+    border-style: dashed;
+}
+.botellaPlastico
+{
+    position: absolute;
+    top: 350px;
+    left: 45px;
+    cursor: pointer;
+    border-style: dashed;
+}
+.vasoPlastico
+{
+    position: absolute;
+    top: 330px;
+    left: 750px;
+    border-style: dashed;
+    cursor: pointer;
+}
+.plasticRed
+{
+    position: absolute;
+    left:20%;
+    top:101%;
+    cursor: pointer;
+}
+.plasticGreen
+{
+    position: absolute;
+    left:35%;
+    top:101%;
+    cursor: pointer;
+}
+.plasticYellow
+{
+    position: absolute;
+    left:50%;
+    top:101%;
+    cursor: pointer;
+}
+.plasticBlue
+{
+    position: absolute;
+    left:65%;
+    top:101%;
+    cursor: pointer;
+}
+.hold
+{
+    border: solid chartreuse 4px;
+    cursor: pointer;
+}
+.hovered
+{
+    background-color: salmon;
+    border-style: dashed;
+    width: 100px;
+    height: 100px;
+}
+.invisible
+{
+    display: none;
+    cursor: pointer;
+}
