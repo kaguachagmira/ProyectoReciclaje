@@ -5,10 +5,16 @@ var vasoPlastico = document.querySelector(".vasoPlastico");
 var botellaVidrio = document.querySelector(".botellaVidrio");
 //Variables para basura organica
 var platanoOrganico = document.querySelector(".platanoOrganico");
+var manzanaOrganico = document.querySelector(".manzanaOrganico");
+//Varaibles para basura de papel
+var papelPapel = document.querySelector(".papelPapel");
+var cajaPapel = document.querySelector(".cajaPapel");
 
 //Variable que me permite copiar informacion
 let draggedItem = null;
-
+//Variable para el audio
+var win = document.getElementById("win");
+var fail = document.getElementById("fail");
 //Variable para basurero de plastico
 var basureroR = document.querySelector(".plasticRed");
 basureroR.number=1;
@@ -31,8 +37,13 @@ basureroY.addEventListener('dragenter',dragEnter);
 basureroY.addEventListener('dragleave', dragLeave);
 basureroY.addEventListener('drop',dragDropY)
 
-
-
+//Varaibles para basurero de papel
+var basureroB = document.querySelector(".plasticBlue");
+basureroB.number=4;
+basureroB.addEventListener('dragover',dragOver);
+basureroB.addEventListener('dragenter',dragEnter);
+basureroB.addEventListener('dragleave',dragLeave);
+basureroB.addEventListener('drop',dragDropB); 
 
 //Listeners de la basura plastica
 botellaPlastico.number=1;
@@ -47,9 +58,19 @@ botellaVidrio.addEventListener('dragstart',dragStart);
 botellaVidrio.addEventListener('dragend',dragEnd);
 //Listeners de la basura organica
 platanoOrganico.number=7;
+manzanaOrganico.number=8;
 platanoOrganico.addEventListener('dragstart',dragStart);
 platanoOrganico.addEventListener('dragend',dragEnd);
+manzanaOrganico.addEventListener('dragstart',dragStart);
+manzanaOrganico.addEventListener('dragend',dragEnd);
 
+//Listeners de la basura de papel
+papelPapel.number=10;
+cajaPapel.number=11;
+papelPapel.addEventListener('dragstart',dragStart);
+papelPapel.addEventListener('dragend',dragEnd);
+cajaPapel.addEventListener('dragstart',dragStart);
+cajaPapel.addEventListener('dragend',dragEnd);
 
 function dragStart()
 {
@@ -101,6 +122,30 @@ function dragStart()
                 console.log("Start");
                 break;
             }
+        case 8:
+            {
+                draggedItem = manzanaOrganico;
+                draggedItem.number=8;
+                setTimeout(()=>(this.className ='invisible'),0) ;
+                console.log("Start");
+                break;
+            }
+        case 10:
+            {
+                draggedItem = papelPapel;
+                draggedItem.number=10;
+                setTimeout(()=>(this.className ='invisible'),0) ;
+                console.log("Empezo a arastrasrse");
+                break;
+            }
+        case 11:
+            {
+                draggedItem = cajaPapel;
+                draggedItem.number=11;
+                setTimeout(()=>(this.className ='invisible'),0) ;
+                console.log("Empezo a arastrasrse");
+                break;
+            }
         default:
             {
                 console.log("Default");
@@ -117,6 +162,7 @@ function dragEnd()
         {
             //draggedItemR.style.display = 'block';
             this.className = 'botellaPlastico';
+            console.log("End");
             break;
         }
         case 2:
@@ -144,11 +190,27 @@ function dragEnd()
         {
             break;
         }
-        //Efectos de  retonrno para organico
+        //Efectos de  retorno para organico
         case 7:
         {
             //draggedItemG.style.display = 'block';
             this.className = 'platanoOrganico';
+            break;
+        }
+        case 8:
+        {
+            this.className = 'manzanaOrganico';
+            break;
+        }
+        //Efecto de retorno para papeles
+        case 10:
+        {
+            this.className = 'papelPapel';
+            break;
+        }
+        case 11:
+        {
+            this.className = 'cajaPapel';
             break;
         }
         default:
@@ -161,9 +223,10 @@ function dragEnd()
 //PARA PLASTICO
 function dragOver(e)
 {
-    e.preventDefault();   
+    e.preventDefault();
+    this.className +=' hovered';
 }
-function dragEnter(e)
+function dragEnter(e)   
 {   
     e.preventDefault();
     this.className +=' hovered';
@@ -175,21 +238,29 @@ function dragLeave()
         case 1:
         {
             this.className = 'plasticRed';
+            //this.className -=' hovered';
             break;
         }
         case 2:
         {
             this.className = 'plasticGreen';
+            //this.className -=' hovered';
             break;
         }
         case 3:
         {
-            this,className = 'plasticYellow';
+            this.className = 'plasticYellow';
+            //this.className -=' hovered';
+            break;
+        }
+        case 4:
+        {
+            this.className = 'plasticBlue';
             break;
         }
         default:
         {
-
+            console.log("nada");
         }
     }
  
@@ -203,10 +274,11 @@ function dragDrop ()
         //draggedItemR.style.display = 'block';
         this.append(draggedItem);
         draggedItem.number=0;
+        win.play();
     }
     else
     {
-        
+        fail.play();
     }
 
 }
@@ -219,39 +291,42 @@ function dragDropG()
         //draggedItemG.style.display = 'block';
         this.append(draggedItem);
         draggedItem.number=0;
+        win.play();
     }
     else
     {
-
+        fail.play();
     }
-
 }
 //PARA ORGANICO
 function dragDropY()
 {
-    if(draggedItem.number==7)
+    if(draggedItem.number==7 || draggedItem.number==8 || draggedItem.number==9)
     {
         this.className = 'plasticYellow';
         //draggedItemG.style.display = 'block';
         this.append(draggedItem);
+        win.play();
         draggedItem.number=0;
     }
     else
     {
-
+        fail.play();
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+function dragDropB()
+{
+    if(draggedItem.number==10 ||draggedItem.number==11||draggedItem.number==12)
+    {
+        this.className = 'plasticBlue';
+        //draggedItemR.style.display = 'block';
+        this.append(draggedItem);
+        win.play();
+        draggedItem.number=0;
+    }
+    else
+    {
+        fail.play();
+    }
+}

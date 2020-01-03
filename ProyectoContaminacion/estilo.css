@@ -22,6 +22,14 @@ body
     cursor: pointer;
     border-style: dashed; 
 }
+.manzanaOrganico
+{
+    position: absolute;
+    top: 240px;
+    left: 770px;
+    cursor: pointer;
+    border-style: dashed; 
+}
 .botellaVidrio
 {
     position: absolute;
@@ -45,6 +53,22 @@ body
     left: 750px;
     border-style: dashed;
     cursor: pointer;
+}
+.papelPapel    
+{
+    position: absolute;
+    top: 35px;
+    left: 670px;
+    cursor: pointer;
+    border-style: dashed;
+}
+.cajaPapel
+{
+    position: absolute;
+    top: 180px;
+    left: 460px;
+    cursor: pointer;
+    border-style: dashed; 
 }
 .plasticRed
 {
@@ -81,7 +105,7 @@ body
 }
 .hovered
 {
-    background-color: salmon;
+    background-color: transparent;
     border-style: dashed;
     width: 100px;
     height: 100px;
@@ -90,4 +114,11 @@ body
 {
     display: none;
     cursor: pointer;
+}
+.hoveredP
+{
+    background-color: transparent;
+    border-style: dashed;
+    width: 100px;
+    height: 100px;
 }

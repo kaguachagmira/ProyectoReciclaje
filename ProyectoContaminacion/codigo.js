@@ -59,7 +59,6 @@ function dragStart()
     setTimeout(()=>(this.className ='invisible'),0) ;
     console.log('start');
 }
-
 function dragEnd()
 {   
     switch (this.number)
@@ -89,7 +88,6 @@ function dragEnd()
     
     console.log('End');
 }
-
 function dragOver(e)
 {
     e.preventDefault();   
